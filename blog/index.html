@@ -1,0 +1,60 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<!-- Breadcrumb -->
+{% include breadcrumb.html %}
+
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>Blog</h1>
+            <p>Artigos, tutoriais e reflexões sobre diversos temas</p>
+        </header>
+        <p>Explore os artigos abaixo ou navegue por categorias e tags.</p>
+        <ul class="actions">
+            <li><a href="{{ '/blog/arquivo/' | relative_url }}" class="button">Ver Arquivo</a></li>
+            <li><a href="{{ '/blog/categorias/' | relative_url }}" class="button">Categorias</a></li>
+            <li><a href="{{ '/blog/tags/' | relative_url }}" class="button">Tags</a></li>
+        </ul>
+    </div>
+    <span class="image object">
+        <img src="{{ '/images/blog/blog-banner.jpg' | relative_url }}" alt="" />
+    </span>
+</section>
+
+<section>
+    <div class="posts">
+        {% for post in site.posts %}
+        <article>
+            <a href="{{ post.url | relative_url }}" class="image">
+                <img src="{{ post.image | default: '/images/blog/default-post.jpg' | relative_url }}" alt="" />
+            </a>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            
+            {% if post.categories %}
+            <p class="meta">
+                <strong>Categoria:</strong> {{ post.categories | join: ', ' }} | 
+                <strong>Data:</strong> {{ post.date | date: "%d/%m/%Y" }}
+            </p>
+            {% endif %}
+            
+            <p>{{ post.description | default: post.excerpt | strip_html | truncate: 200 }}</p>
+            
+            {% if post.tags %}
+            <p class="tags">
+                {% for tag in post.tags %}
+                <span class="tag">#{{ tag }}</span>
+                {% endfor %}
+            </p>
+            {% endif %}
+            
+            <ul class="actions">
+                <li><a href="{{ post.url | relative_url }}" class="button">Ler Mais</a></li>
+            </ul>
+        </article>
+        {% endfor %}
+    </div>
+</section>

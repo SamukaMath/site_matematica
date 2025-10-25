@@ -1,0 +1,40 @@
+---
+layout: default
+title: Projetos Concluídos
+permalink: /projetos/concluidos/
+breadcrumb_parent: /projetos/
+breadcrumb_parent_name: Projetos
+---
+
+<!-- Breadcrumb -->
+{% include breadcrumb.html %}
+
+<section>
+    <header class="major">
+        <h1>Projetos Concluídos</h1>
+        <p>Trabalhos finalizados</p>
+    </header>
+</section>
+
+<section>
+    <div class="posts">
+        {% assign projetos_concluidos = site.projetos | where: "status", "concluido" %}
+        {% if projetos_concluidos.size > 0 %}
+            {% for projeto in projetos_concluidos %}
+            <article>
+                <a href="{{ projeto.url | relative_url }}" class="image">
+                    <img src="{{ projeto.image | default: '/images/projetos/default-projeto.jpg' | relative_url }}" alt="" />
+                </a>
+                <h3><a href="{{ projeto.url | relative_url }}">{{ projeto.title }}</a></h3>
+                <p><strong>Status:</strong> Concluído</p>
+                <p>{{ projeto.description | truncate: 200 }}</p>
+                <ul class="actions">
+                    <li><a href="{{ projeto.url | relative_url }}" class="button">Ver Projeto</a></li>
+                </ul>
+            </article>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum projeto concluído ainda.</p>
+        {% endif %}
+    </div>
+</section>

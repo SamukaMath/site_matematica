@@ -1,0 +1,59 @@
+---
+layout: default
+title: Início
+---
+
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>Olá, seja bem-vindo ao<br />
+            {{ site.title }}</h1>
+            <p>{{ site.description }}</p>
+        </header>
+        <p>Este é um espaço dedicado a compartilhar conhecimento, projetos e ideias. Explore o blog para ler artigos sobre diversos temas, ou confira a seção de projetos para ver o que tenho desenvolvido.</p>
+        <ul class="actions">
+            <li><a href="{{ '/blog/' | relative_url }}" class="button big">Visite o Blog</a></li>
+            <li><a href="{{ '/projetos/' | relative_url }}" class="button big">Veja os Projetos</a></li>
+        </ul>
+    </div>
+    <span class="image object">
+        <img src="{{ '/images/pic10.jpg' | relative_url }}" alt="" />
+    </span>
+</section>
+
+<section>
+    <header class="major">
+        <h2>Últimos Posts do Blog</h2>
+    </header>
+    <div class="posts">
+        {% for post in site.posts limit:6 %}
+        <article>
+            <a href="{{ post.url | relative_url }}" class="image">
+                <img src="{{ post.image | default: '/images/pic01.jpg' | relative_url }}" alt="" />
+            </a>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+            <ul class="actions">
+                <li><a href="{{ post.url | relative_url }}" class="button">Ler Mais</a></li>
+            </ul>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section>
+    <header class="major">
+        <h2>Projetos em Destaque</h2>
+    </header>
+    <div class="features">
+        {% for projeto in site.projetos limit:4 %}
+        <article>
+            <span class="icon {{ projeto.icon | default: 'fa-gem' }}"></span>
+            <div class="content">
+                <h3><a href="{{ projeto.url | relative_url }}">{{ projeto.title }}</a></h3>
+                <p>{{ projeto.description | truncate: 120 }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>

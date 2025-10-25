@@ -1,0 +1,45 @@
+---
+layout: default
+title: Projetos
+permalink: /projetos/
+---
+
+<!-- Breadcrumb -->
+{% include breadcrumb.html %}
+
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>Projetos</h1>
+            <p>Conheça os projetos que desenvolvi</p>
+        </header>
+        <p>Aqui você encontra uma coleção dos meus trabalhos, desde projetos acadêmicos até desenvolvimentos práticos.</p>
+        <ul class="actions">
+            <li><a href="{{ '/projetos/em-andamento/' | relative_url }}" class="button">Em Andamento</a></li>
+            <li><a href="{{ '/projetos/concluidos/' | relative_url }}" class="button">Concluídos</a></li>
+        </ul>
+    </div>
+    <span class="image object">
+        <img src="{{ '/images/projetos/projetos-banner.jpg' | relative_url }}" alt="" />
+    </span>
+</section>
+
+<section>
+    <header class="major">
+        <h2>Todos os Projetos</h2>
+    </header>
+    <div class="posts">
+        {% for projeto in site.projetos %}
+        <article>
+            <a href="{{ projeto.url | relative_url }}" class="image">
+                <img src="{{ projeto.image | default: '/images/projetos/default-projeto.jpg' | relative_url }}" alt="" />
+            </a>
+            <h3><a href="{{ projeto.url | relative_url }}">{{ projeto.title }}</a></h3>
+            <p>{{ projeto.description | truncate: 200 }}</p>
+            <ul class="actions">
+                <li><a href="{{ projeto.url | relative_url }}" class="button">Ver Projeto</a></li>
+            </ul>
+        </article>
+        {% endfor %}
+    </div>
+</section>

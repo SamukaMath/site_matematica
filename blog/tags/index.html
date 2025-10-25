@@ -1,0 +1,271 @@
+---
+layout: default
+title: Tags
+permalink: /blog/tags/
+breadcrumb_parent: /blog/
+breadcrumb_parent_name: Blog
+---
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.page-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f5f7fa;
+    border-radius: 12px;
+}
+
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 2px solid #e1e8ed;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.tag-item:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.tag-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tag-item:hover .tag-badge {
+    background: white;
+    color: #667eea;
+}
+
+/* Tamanhos dinâmicos baseados na quantidade */
+.tag-size-1 { font-size: 0.8rem; }
+.tag-size-2 { font-size: 0.9rem; }
+.tag-size-3 { font-size: 1rem; }
+.tag-size-4 { font-size: 1.1rem; }
+.tag-size-5 { font-size: 1.2rem; font-weight: 700; }
+
+.tag-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f5f7fa;
+    border-radius: 8px;
+}
+
+.tag-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #667eea;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tag-section-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #667eea;
+}
+
+.tag-count-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.posts-list-compact {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.post-item-compact {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.post-item-compact:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-link {
+    font-weight: 600;
+    color: #2c3e50;
+    text-decoration: none;
+    flex: 1;
+}
+
+.post-link:hover {
+    color: #667eea;
+}
+
+.post-date-badge {
+    background: #667eea;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+.post-category-badge {
+    background: #764ba2;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .post-item-compact {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .post-date-badge,
+    .post-category-badge {
+        margin-left: 0;
+    }
+}
+</style>
+
+{% include breadcrumb.html %}
+
+<section class="page-header">
+    <h1>🏷️ Tags</h1>
+    <p>Navegue pelos posts através de tags</p>
+</section>
+
+<section>
+    <div class="nav-buttons">
+        <a href="{{ '/blog/' | relative_url }}" class="button primary">← Voltar ao Blog</a>
+        <a href="{{ '/blog/arquivo/' | relative_url }}" class="button">Arquivo</a>
+        <a href="{{ '/blog/categorias/' | relative_url }}" class="button">Categorias</a>
+    </div>
+</section>
+
+<!-- Nuvem de Tags -->
+<section>
+    <h2 style="text-align: center; margin-bottom: 1.5rem;">Nuvem de Tags</h2>
+    <div class="tags-cloud">
+        {% assign max_count = 0 %}
+        {% for tag in site.tags %}
+            {% if tag[1].size > max_count %}
+                {% assign max_count = tag[1].size %}
+            {% endif %}
+        {% endfor %}
+        
+        {% for tag in site.tags %}
+            {% assign count = tag[1].size %}
+            {% assign size_class = "tag-size-1" %}
+            {% if count >= max_count %}
+                {% assign size_class = "tag-size-5" %}
+            {% elsif count >= max_count | times: 0.75 %}
+                {% assign size_class = "tag-size-4" %}
+            {% elsif count >= max_count | times: 0.5 %}
+                {% assign size_class = "tag-size-3" %}
+            {% elsif count >= max_count | times: 0.25 %}
+                {% assign size_class = "tag-size-2" %}
+            {% endif %}
+            
+            <a href="#{{ tag[0] | slugify }}" class="tag-item {{ size_class }}">
+                #{{ tag[0] }}
+                <span class="tag-badge">{{ count }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Listagens por Tag -->
+{% for tag in site.tags %}
+<section class="tag-section" id="{{ tag[0] | slugify }}">
+    <div class="tag-section-header">
+        <h2>#{{ tag[0] }}</h2>
+        <span class="tag-count-badge">
+            {{ tag[1].size }} {% if tag[1].size == 1 %}post{% else %}posts{% endif %}
+        </span>
+    </div>
+    
+    <div class="posts-list-compact">
+        {% for post in tag[1] %}
+        <div class="post-item-compact">
+            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <span class="post-date-badge">{{ post.date | date: "%d/%m/%Y" }}</span>
+                {% if post.categories %}
+                <span class="post-category-badge">{{ post.categories | join: ', ' }}</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="#" class="button small">↑ Voltar ao Topo</a>
+    </div>
+</section>
+{% endfor %}
+
+<section style="margin-top: 3rem; text-align: center;">
+    <a href="{{ '/blog/' | relative_url }}" class="button primary large">← Voltar ao Blog</a>
+</section>

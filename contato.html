@@ -1,0 +1,288 @@
+---
+layout: default
+title: Contato
+permalink: /contato/
+---
+
+<style>
+.contato-hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contato-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contato-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.contact-form {
+    background: #f5f7fa;
+    padding: 2.5rem;
+    border-radius: 12px;
+}
+
+.contact-form h2 {
+    color: #667eea;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-info {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 2px solid #e1e8ed;
+}
+
+.contact-info h2 {
+    color: #667eea;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f5f7fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: linear-gradient(135deg, #f5f7fa, #e8ecf1);
+    transform: translateX(5px);
+}
+
+.info-icon {
+    font-size: 2rem;
+    min-width: 40px;
+}
+
+.info-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.info-content p {
+    margin: 0;
+    color: #666;
+}
+
+.info-content a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.info-content a:hover {
+    text-decoration: underline;
+}
+
+.social-connect {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+}
+
+.social-connect h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-5px);
+}
+
+@media (max-width: 968px) {
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contato-hero h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+
+<div class="contato-hero">
+    <h1>📧 Entre em Contato</h1>
+    <p>Tem alguma dúvida, sugestão ou quer colaborar? Adoraria ouvir você!</p>
+</div>
+
+<div class="contato-grid">
+    <!-- Formulário de Contato -->
+    <div class="contact-form">
+        <h2>Envie uma Mensagem</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label for="name">Nome *</label>
+                <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Assunto *</label>
+                <input type="text" id="subject" name="subject" required placeholder="Sobre o que você quer falar?">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Mensagem *</label>
+                <textarea id="message" name="message" required placeholder="Escreva sua mensagem aqui..."></textarea>
+            </div>
+            
+            <button type="submit" class="button primary large">Enviar Mensagem</button>
+        </form>
+        
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">
+            * Campos obrigatórios. Seus dados estão seguros e não serão compartilhados.
+        </p>
+    </div>
+    
+    <!-- Informações de Contato -->
+    <div>
+        <div class="contact-info">
+            <h2>Outras Formas de Contato</h2>
+            
+            <div class="info-item">
+                <div class="info-icon">📧</div>
+                <div class="info-content">
+                    <h3>E-mail</h3>
+                    <p><a href="mailto:contato@meusite.com.br">contato@meusite.com.br</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                    <h3>Telefone</h3>
+                    <p>+55 (11) 99999-9999</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                    <h3>Localização</h3>
+                    <p>São Paulo, SP - Brasil</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div class="info-content">
+                    <h3>Horário de Resposta</h3>
+                    <p>Segunda a Sexta: 9h - 18h (Horário de Brasília)</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">Geralmente respondo em até 24 horas úteis</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-connect">
+            <h3>Conecte-se nas Redes Sociais</h3>
+            <div class="social-icons">
+                <a href="https://github.com/carloscostamath" class="social-icon-link" target="_blank" rel="noopener" title="GitHub">
+                    <span>G</span>
+                </a>
+                <a href="https://linkedin.com/in/seu-usuario" class="social-icon-link" target="_blank" rel="noopener" title="LinkedIn">
+                    <span>in</span>
+                </a>
+                <a href="https://twitter.com/seu_usuario" class="social-icon-link" target="_blank" rel="noopener" title="Twitter">
+                    <span>T</span>
+                </a>
+                <a href="https://instagram.com/seu_usuario" class="social-icon-link" target="_blank" rel="noopener" title="Instagram">
+                    <span>IG</span>
+                </a>
+                <a href="https://facebook.com/seu_usuario" class="social-icon-link" target="_blank" rel="noopener" title="Facebook">
+                    <span>F</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section style="text-align: center; background: #f5f7fa; padding: 3rem; border-radius: 12px; margin-top: 3rem;">
+    <h2 style="color: #667eea; margin-bottom: 1rem;">Perguntas Frequentes</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem;">
+        Antes de entrar em contato, talvez sua dúvida já esteja respondida em nossos artigos ou na seção de FAQ (em breve).
+    </p>
+    <a href="{{ '/blog/' | relative_url }}" class="button">Explorar o Blog</a>
+</section>

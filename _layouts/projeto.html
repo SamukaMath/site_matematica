@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<article>
+    <header>
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="lead">{{ page.description }}</p>
+        {% endif %}
+    </header>
+
+    <div class="content">
+        {{ content }}
+    </div>
+
+    {% if page.github %}
+    <p>
+        <a href="{{ page.github }}" class="button primary icon brands fa-github" target="_blank">Ver no GitHub</a>
+    </p>
+    {% endif %}
+
+    {% if page.demo %}
+    <p>
+        <a href="{{ page.demo }}" class="button icon solid fa-external-link-alt" target="_blank">Ver Demo</a>
+    </p>
+    {% endif %}
+
+    <p>
+        <a href="{{ '/projetos/' | relative_url }}" class="button">← Voltar para Projetos</a>
+    </p>
+</article>

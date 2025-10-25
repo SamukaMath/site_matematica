@@ -1,0 +1,281 @@
+---
+layout: default
+title: Categorias
+permalink: /blog/categorias/
+breadcrumb_parent: /blog/
+breadcrumb_parent_name: Blog
+---
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.page-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.category-card {
+    background: white;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
+    border-color: #667eea;
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.category-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.category-count {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.recent-posts {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e8ed;
+}
+
+.recent-posts h4 {
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.recent-posts ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-posts li {
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+}
+
+.recent-posts a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.recent-posts a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.view-all-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.category-details {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f5f7fa;
+    border-radius: 8px;
+}
+
+.category-details h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.posts-compact {
+    display: grid;
+    gap: 1rem;
+}
+
+.post-compact {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.post-compact:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-compact-title {
+    font-weight: 600;
+    color: #2c3e50;
+    text-decoration: none;
+    flex: 1;
+}
+
+.post-compact-title:hover {
+    color: #667eea;
+}
+
+.post-compact-date {
+    background: #667eea;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-compact {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .post-compact-date {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+</style>
+
+{% include breadcrumb.html %}
+
+<section class="page-header">
+    <h1>📁 Categorias</h1>
+    <p>Explore os posts organizados por categoria</p>
+</section>
+
+<section>
+    <div class="nav-buttons">
+        <a href="{{ '/blog/' | relative_url }}" class="button primary">← Voltar ao Blog</a>
+        <a href="{{ '/blog/arquivo/' | relative_url }}" class="button">Arquivo</a>
+        <a href="{{ '/blog/tags/' | relative_url }}" class="button">Tags</a>
+    </div>
+</section>
+
+<section>
+    <div class="categories-grid">
+        {% for category in site.categories %}
+        <div class="category-card">
+            <div class="category-icon">📂</div>
+            <div class="category-name">{{ category[0] }}</div>
+            <span class="category-count">{{ category[1].size }} {% if category[1].size == 1 %}post{% else %}posts{% endif %}</span>
+            
+            <div class="recent-posts">
+                <h4>Últimos Posts</h4>
+                <ul>
+                    {% for post in category[1] limit:3 %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 45 }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <a href="#{{ category[0] | slugify }}" class="view-all-btn">Ver Todos →</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Listagens Detalhadas -->
+{% for category in site.categories %}
+<section class="category-details" id="{{ category[0] | slugify }}">
+    <h2>📂 {{ category[0] }} ({{ category[1].size }} posts)</h2>
+    
+    <div class="posts-compact">
+        {% for post in category[1] %}
+        <div class="post-compact">
+            <a href="{{ post.url | relative_url }}" class="post-compact-title">{{ post.title }}</a>
+            <span class="post-compact-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="#" class="button small">↑ Voltar ao Topo</a>
+    </div>
+</section>
+{% endfor %}
+
+<section style="margin-top: 3rem; text-align: center;">
+    <a href="{{ '/blog/' | relative_url }}" class="button primary large">← Voltar ao Blog</a>
+</section>

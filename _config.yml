@@ -1,0 +1,89 @@
+# Configuração do Site
+title: Meu Site
+description: Blog e Portfolio Pessoal - Artigos, tutoriais e projetos sobre tecnologia e ciência
+author: Carlos Costa
+email: contato@meusite.com.br
+phone: "+55 (11) 99999-9999"
+address: "São Paulo, SP - Brasil"
+
+# URLs
+baseurl: "/site"
+url: "https://carloscostamath.github.io"
+
+# Social Media
+social:
+  twitter: "https://twitter.com/seu_usuario"
+  facebook: "https://facebook.com/seu_usuario"
+  instagram: "https://instagram.com/seu_usuario"
+  github: "https://github.com/carloscostamath"
+  linkedin: "https://linkedin.com/in/seu_usuario"
+
+# Configurações do Jekyll
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+# Kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: html
+    css_class: 'highlight'
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Coleções
+collections:
+  projetos:
+    output: true
+    permalink: /projetos/:title/
+
+# Valores padrão
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Carlos Costa"
+      enable_dark_mode: true
+      enable_font_control: true
+      enable_toc: true
+      enable_share: true
+      enable_lightbox: true
+      enable_scroll_animations: true
+      breadcrumb_parent: "/blog/"
+      breadcrumb_parent_name: "Blog"
+  - scope:
+      path: ""
+      type: "projetos"
+    values:
+      layout: "projeto"
+      breadcrumb_parent: "/projetos/"
+      breadcrumb_parent_name: "Projetos"
+
+# Excluir da compilação
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+  - node_modules/
+  - package.json
+  - package-lock.json
+
+# SEO
+lang: pt-BR
+timezone: America/Sao_Paulo
+logo: /images/logo.png
+
+# Google Analytics (opcional)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Disqus Comments (opcional)
+# disqus:
+#   shortname: seu-shortname

@@ -1,0 +1,66 @@
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        {% if page.breadcrumb_parent %}
+        <li><a href="{{ page.breadcrumb_parent | relative_url }}">{{ page.breadcrumb_parent_name }}</a></li>
+        {% endif %}
+        {% if page.breadcrumb_parent2 %}
+        <li><a href="{{ page.breadcrumb_parent2 | relative_url }}">{{ page.breadcrumb_parent2_name }}</a></li>
+        {% endif %}
+        <li class="active">{{ page.title }}</li>
+    </ol>
+</nav>
+
+<style>
+.breadcrumb-nav {
+    background: #f5f7fa;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '→';
+    margin-left: 0.5rem;
+    color: #999;
+}
+
+.breadcrumb a {
+    color: #667eea;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #764ba2;
+    text-decoration: none;
+}
+
+.breadcrumb a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.breadcrumb .active {
+    color: #333;
+    font-weight: 600;
+}
+</style>

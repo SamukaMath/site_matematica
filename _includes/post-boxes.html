@@ -1,0 +1,112 @@
+{%- comment -%}
+Componentes Especiais para Posts
+Veja _posts/2025-10-23-guia-recursos-posts.md para exemplos de uso
+{%- endcomment -%}
+
+{% if include.type == "highlight" %}
+<div class="highlight-box">
+    {% if include.title %}<strong>{{ include.title }}</strong>{% endif %}
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "quote" %}
+<div class="quote-box">
+    {% if include.title %}<strong>{{ include.title }}</strong>{% endif %}
+    {{ include.content | markdownify }}
+    {% if include.author %}<cite>— {{ include.author }}</cite>{% endif %}
+</div>
+{% endif %}
+
+{% if include.type == "fun-fact" %}
+<div class="fun-fact">
+    <h4>💡 {{ include.title | default: "Curiosidade Histórica" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "glossary" or include.type == "definition" %}
+<div class="glossary-box">
+    <h4>📖 {{ include.title | default: "Definição" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "concept" %}
+<div class="concept-box">
+    <h4>{{ include.title }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "concept-grid-start" %}
+<div class="concept-grid">
+{% endif %}
+
+{% if include.type == "concept-grid-end" %}
+</div>
+{% endif %}
+
+{% if include.type == "timeline-start" %}
+<div class="timeline">
+{% endif %}
+
+{% if include.type == "timeline-item" %}
+    <div class="timeline-item">
+        {% if include.year or include.title %}<h4>{% if include.year %}{{ include.year }} - {% endif %}{{ include.title }}</h4>{% endif %}
+        {{ include.content | markdownify }}
+    </div>
+{% endif %}
+
+{% if include.type == "timeline-end" %}
+</div>
+{% endif %}
+
+{% if include.type == "warning" or include.type == "danger" %}
+<div class="warning-box">
+    <h4>⚠️ {{ include.title | default: "Atenção" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "info" %}
+<div class="info-box">
+    <h4>ℹ️ {{ include.title | default: "Informação" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "success" %}
+<div class="success-box">
+    <h4>✅ {{ include.title | default: "Sucesso" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "example" %}
+<div class="example-box">
+    <h4>📝 {{ include.title | default: "Exemplo" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "note" %}
+<div class="note-box">
+    <h4>📌 {{ include.title | default: "Nota" }}</h4>
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "final-question" %}
+<div class="final-question">
+    {% if include.title %}<h3>{{ include.title }}</h3>{% endif %}
+    {{ include.content | markdownify }}
+</div>
+{% endif %}
+
+{% if include.type == "image" %}
+<figure class="{% if include.position %}{{ include.position }}{% else %}center{% endif %}">
+    <img src="{{ include.src | relative_url }}" alt="{{ include.alt | default: '' }}" {% if include.position != 'center' %}loading="lazy"{% else %}loading="eager"{% endif %}>
+    {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>
+{% endif %}

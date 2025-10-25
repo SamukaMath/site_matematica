@@ -1,0 +1,40 @@
+---
+layout: default
+title: Projetos em Andamento
+permalink: /projetos/em-andamento/
+breadcrumb_parent: /projetos/
+breadcrumb_parent_name: Projetos
+---
+
+<!-- Breadcrumb -->
+{% include breadcrumb.html %}
+
+<section>
+    <header class="major">
+        <h1>Projetos em Andamento</h1>
+        <p>Trabalhos atualmente em desenvolvimento</p>
+    </header>
+</section>
+
+<section>
+    <div class="posts">
+        {% assign projetos_em_andamento = site.projetos | where: "status", "em_andamento" %}
+        {% if projetos_em_andamento.size > 0 %}
+            {% for projeto in projetos_em_andamento %}
+            <article>
+                <a href="{{ projeto.url | relative_url }}" class="image">
+                    <img src="{{ projeto.image | default: '/images/projetos/default-projeto.jpg' | relative_url }}" alt="" />
+                </a>
+                <h3><a href="{{ projeto.url | relative_url }}">{{ projeto.title }}</a></h3>
+                <p><strong>Status:</strong> Em desenvolvimento</p>
+                <p>{{ projeto.description | truncate: 200 }}</p>
+                <ul class="actions">
+                    <li><a href="{{ projeto.url | relative_url }}" class="button">Ver Projeto</a></li>
+                </ul>
+            </article>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum projeto em andamento no momento.</p>
+        {% endif %}
+    </div>
+</section>

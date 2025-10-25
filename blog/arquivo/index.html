@@ -1,0 +1,308 @@
+---
+layout: default
+title: Arquivo do Blog
+permalink: /blog/arquivo/
+breadcrumb_parent: /blog/
+breadcrumb_parent_name: Blog
+---
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.page-header p {
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.search-box {
+    max-width: 500px;
+    margin: 1.5rem auto 0 auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.9);
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    background: white;
+    border-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #e1e8ed;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.year-section {
+    background: #f5f7fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.year-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #667eea;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.year-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #667eea;
+}
+
+.year-count {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.posts-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.post-item {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.post-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.post-date {
+    background: #667eea;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.post-title {
+    font-weight: 600;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.post-title:hover {
+    color: #667eea;
+}
+
+.post-category {
+    background: #764ba2;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .post-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .post-info {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+</style>
+
+{% include breadcrumb.html %}
+
+<section class="page-header">
+    <h1>📚 Arquivo do Blog</h1>
+    <p>Todos os posts organizados cronologicamente</p>
+    
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Buscar por título ou categoria...">
+    </div>
+</section>
+
+<section>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">{{ site.posts.size }}</span>
+            <span class="stat-label">Total de Posts</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">{{ site.categories.size }}</span>
+            <span class="stat-label">Categorias</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">{{ site.tags.size }}</span>
+            <span class="stat-label">Tags</span>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="nav-buttons">
+        <a href="{{ '/blog/' | relative_url }}" class="button primary">← Voltar ao Blog</a>
+        <a href="{{ '/blog/categorias/' | relative_url }}" class="button">Categorias</a>
+        <a href="{{ '/blog/tags/' | relative_url }}" class="button">Tags</a>
+    </div>
+</section>
+
+<section id="archiveContent">
+    {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in postsByYear %}
+    <div class="year-section" data-year="{{ year.name }}">
+        <div class="year-header">
+            <h2>{{ year.name }}</h2>
+            <span class="year-count">{{ year.items.size }} posts</span>
+        </div>
+        <div class="posts-list">
+            {% for post in year.items %}
+            <div class="post-item" data-title="{{ post.title | downcase }}" data-category="{% if post.categories %}{{ post.categories | join: ' ' | downcase }}{% endif %}">
+                <div class="post-info">
+                    <span class="post-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+                    <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+                    {% if post.categories %}
+                    <span class="post-category">{{ post.categories | join: ', ' }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    
+    <div class="no-results" id="noResults" style="display: none;">
+        <p>Nenhum post encontrado com esse termo de busca.</p>
+    </div>
+</section>
+
+<script>
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const years = document.querySelectorAll('.year-section');
+    let hasResults = false;
+    
+    years.forEach(year => {
+        let yearHasVisiblePosts = false;
+        const posts = year.querySelectorAll('.post-item');
+        
+        posts.forEach(post => {
+            const title = post.getAttribute('data-title');
+            const category = post.getAttribute('data-category');
+            
+            if (title.includes(searchTerm) || category.includes(searchTerm)) {
+                post.style.display = '';
+                yearHasVisiblePosts = true;
+                hasResults = true;
+            } else {
+                post.style.display = 'none';
+            }
+        });
+        
+        year.style.display = yearHasVisiblePosts ? '' : 'none';
+    });
+    
+    document.getElementById('noResults').style.display = hasResults ? 'none' : 'block';
+});
+</script>
+
+<section style="margin-top: 3rem; text-align: center;">
+    <a href="{{ '/blog/' | relative_url }}" class="button primary large">← Voltar ao Blog</a>
+</section>

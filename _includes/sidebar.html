@@ -1,0 +1,90 @@
+<div id="sidebar">
+    <div class="inner">
+        <section id="search" class="alt">
+            <form method="get" action="{{ '/busca/' | relative_url }}">
+                <input type="text" name="q" id="query" placeholder="Buscar no site..." />
+            </form>
+        </section>
+
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li>
+                    <span class="opener">Blog</span>
+                    <ul>
+                        <li><a href="{{ '/blog/' | relative_url }}">Todos os Posts</a></li>
+                        <li><a href="{{ '/blog/arquivo/' | relative_url }}">Arquivo</a></li>
+                        <li><a href="{{ '/blog/categorias/' | relative_url }}">Categorias</a></li>
+                        <li><a href="{{ '/blog/tags/' | relative_url }}">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="opener">Projetos</span>
+                    <ul>
+                        <li><a href="{{ '/projetos/' | relative_url }}">Todos os Projetos</a></li>
+                        <li><a href="{{ '/projetos/em-andamento/' | relative_url }}">Em Andamento</a></li>
+                        <li><a href="{{ '/projetos/concluidos/' | relative_url }}">Concluídos</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ '/sobre/' | relative_url }}">Sobre</a></li>
+                <li><a href="{{ '/contato/' | relative_url }}">Contato</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <header class="major">
+                <h2>Math News</h2>
+            </header>
+            <div class="mini-posts">
+                <article>
+                    <a href="https://www.quantamagazine.org/the-game-theory-of-how-algorithms-can-drive-up-prices-20251022/" class="image" target="_blank" rel="noopener">
+                        <img src="{{ '/images/news/game-theory-algorithms.jpg' | relative_url }}" alt="Game Theory of Algorithms" />
+                    </a>
+                    <h3><a href="https://www.quantamagazine.org/the-game-theory-of-how-algorithms-can-drive-up-prices-20251022/" target="_blank" rel="noopener">The Game Theory of How Algorithms Can Drive Up Prices</a></h3>
+                    <p>Como algoritmos podem influenciar preços usando teoria dos jogos.</p>
+                </article>
+                <article>
+                    <a href="https://www.quantamagazine.org/how-soon-will-the-seas-rise-20251020/" class="image" target="_blank" rel="noopener">
+                        <img src="{{ '/images/news/seas-rise.jpg' | relative_url }}" alt="Sea Level Rise" />
+                    </a>
+                    <h3><a href="https://www.quantamagazine.org/how-soon-will-the-seas-rise-20251020/" target="_blank" rel="noopener">How Soon Will the Seas Rise?</a></h3>
+                    <p>Modelos matemáticos preveem a elevação do nível dos oceanos.</p>
+                </article>
+                <article>
+                    <a href="https://www.quantamagazine.org/the-hidden-math-of-ocean-waves-crashes-into-view-20251015/" class="image" target="_blank" rel="noopener">
+                        <img src="{{ '/images/news/ocean-waves.jpg' | relative_url }}" alt="Ocean Waves Math" />
+                    </a>
+                    <h3><a href="https://www.quantamagazine.org/the-hidden-math-of-ocean-waves-crashes-into-view-20251015/" target="_blank" rel="noopener">The Hidden Math of Ocean Waves Crashes Into View</a></h3>
+                    <p>A matemática oculta por trás das ondas oceânicas revelada.</p>
+                </article>
+            </div>
+            <ul class="actions">
+                <li><a href="https://www.quantamagazine.org/" class="button" target="_blank" rel="noopener">Ver Mais Notícias</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <header class="major">
+                <h2>Contato</h2>
+            </header>
+            <p>{{ site.description }}</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                {% if site.phone %}
+                <li class="icon solid fa-phone">{{ site.phone }}</li>
+                {% endif %}
+                {% if site.address %}
+                <li class="icon solid fa-home">{{ site.address }}</li>
+                {% endif %}
+            </ul>
+        </section>
+
+        <footer id="footer">
+            <p class="copyright">&copy; {{ site.title }}. Todos os direitos reservados.<br>
+            Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<header id="header">
+    <a href="{{ '/' | relative_url }}" class="logo"><strong>{{ site.title }}</strong></a>
+    <ul class="icons">
+        {% if site.social.twitter %}
+        <li><a href="{{ site.social.twitter }}" class="icon brands fa-twitter" target="_blank" rel="noopener"><span class="label">Twitter</span></a></li>
+        {% endif %}
+        {% if site.social.facebook %}
+        <li><a href="{{ site.social.facebook }}" class="icon brands fa-facebook-f" target="_blank" rel="noopener"><span class="label">Facebook</span></a></li>
+        {% endif %}
+        {% if site.social.instagram %}
+        <li><a href="{{ site.social.instagram }}" class="icon brands fa-instagram" target="_blank" rel="noopener"><span class="label">Instagram</span></a></li>
+        {% endif %}
+        {% if site.social.github %}
+        <li><a href="{{ site.social.github }}" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+        {% endif %}
+        {% if site.social.linkedin %}
+        <li><a href="{{ site.social.linkedin }}" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+        {% endif %}
+    </ul>
+</header>
